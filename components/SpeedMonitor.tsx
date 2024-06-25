@@ -184,8 +184,8 @@ const SpeedMonitor: React.FC = () => {
         <ResponsiveContainer width="100%" height={400}>
           <LineChart data={data}>
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="time" />
-            <YAxis />
+            <XAxis stroke='white' dataKey="time" />
+            <YAxis stroke='white'/>
             <Tooltip />
             <Legend />
             <Line type="monotone" dataKey="download" stroke="#8884d8" activeDot={{ r: 8 }} />
