@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Speed Monitor Application
 
-## Getting Started
+Speed Monitor is a web-based tool for monitoring internet speed metrics such as download speed, upload speed, and latency. It includes a popup mode for quick access from any location on your device.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Real-time Monitoring:** Continuously measures and displays current download speed, upload speed, and latency.
+- - **Popup Mode:** Includes a lightweight popup mode using Electron, accessible from anywhere on your device
+- **Historical Data:** Stores and visualizes historical speed and latency data using a line chart.
+- **Download Time Calculator:** Calculates estimated download time based on user-provided file size and current download speed.
+- **Data Export:** Allows exporting of monitored data as CSV for further analysis.
+- **Customizable Refresh Interval:** Users can adjust the refresh interval for real-time data updates.
+ 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies Used
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Next.js:** Framework for building server-rendered React applications with enhanced features such as routing and optimized performance.
+- **Recharts:** Library for creating responsive and interactive charts in React applications.
+- **Electron:** Used to create a cross-platform desktop application for the popup mode, enabling usage from any location.
+- **LocalStorage:** Utilized for storing historical data within the browser.
+- 
+## Use Cases
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **Monitoring Home Internet:** Users can monitor their home internet speeds and latencies over time to track performance.
+- **Network Troubleshooting:** Useful for diagnosing network issues by observing speed fluctuations and latency spikes.
+- **Bandwidth Testing:** Provides a tool for testing bandwidth capabilities and evaluating service provider performance.
+- **Educational Purposes:** Can be used in educational settings to demonstrate concepts like real-time data monitoring and charting.
 
-## Learn More
+## Installation and Usage
 
-To learn more about Next.js, take a look at the following resources:
+1. Clone the repository.
+2. In one terminal, navigate to the project directory and run `npm run dev` to start the Next.js server for the main interface.
+3. Open a new terminal and run `npm run dev` to start the Electron popup mode.
+4. Open `http://localhost:3000` in your web browser to access the main application interface.
+5. Adjust the refresh interval and enter a file size to calculate download time.
+6. Explore the historical data chart and export data as CSV for further analysis.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Development Notes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Ensure stable internet connectivity for accurate speed and latency measurements.
+- Adjust the refresh interval based on your preference and system capabilities.
+- The popup mode uses Electron to provide a lightweight desktop experience, accessible from any location on your device.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Feel free to contribute to the project by submitting issues or pull requests on GitHub.
