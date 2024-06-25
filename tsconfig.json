@@ -1,27 +1,29 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "esnext", // Use ESNext to support modern JavaScript features
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
+    "allowJs": true, // Allow JavaScript files to be compiled
+    "skipLibCheck": true, // Skip type checking of declaration files
+    "strict": true, // Enable all strict type-checking options
+    "forceConsistentCasingInFileNames": true, // Enforce consistent file and directory names
+    "noEmit": true, // Do not emit output files (since it's a Next.js project)
+    "esModuleInterop": true, // Enable interoperability between CommonJS and ES modules
+    "module": "esnext", // Specify module code generation
+    "moduleResolution": "node", // Resolve modules using Node.js resolution strategy
+    "resolveJsonModule": true, // Allow importing JSON modules
+    "isolatedModules": true, // Ensure each file is treated as a separate module
+    "jsx": "preserve", // Preserve JSX in TypeScript output
+    "incremental": true, // Enable incremental compilation
     "types": [
       "jest",
       "@testing-library/jest-dom"
-    ]
+    ],
+    "typeRoots": ["node_modules/@types"],
+    "baseUrl": ".",
   },
   "include": [
     "next-env.d.ts",

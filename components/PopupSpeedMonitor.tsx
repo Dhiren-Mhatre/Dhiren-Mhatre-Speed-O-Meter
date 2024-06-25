@@ -1,6 +1,7 @@
-// components/PopupSpeedMonitor.tsx
-import React, { useState, useEffect } from 'react';
-
+import React, { useState, useEffect, CSSProperties } from 'react';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/prefer-as-const */
 interface Speed {
   download: number;
   upload: number;
@@ -28,8 +29,8 @@ const PopupSpeedMonitor: React.FC = () => {
     };
 
     const updateConnectionType = () => {
-      if (navigator.connection) {
-        setConnectionType(navigator.connection.effectiveType || '');
+      if (typeof navigator !== 'undefined' && 'connection' in navigator) {
+        setConnectionType((navigator as any).connection.effectiveType || '');
       }
     };
 
@@ -57,22 +58,22 @@ const PopupSpeedMonitor: React.FC = () => {
   const [closeButtonHovered, setCloseButtonHovered] = useState(false);
 
   return (
-    <div style={styles.container}>
-      <div style={styles.dragRegion}>
-        <h1 style={styles.title}>Speed Monitor</h1>
+    <div style={styles.container as CSSProperties}>
+      <div style={styles.dragRegion as CSSProperties}>
+        <h1 style={styles.title as CSSProperties}>Speed Monitor</h1>
         <button
           onClick={handleCloseWindow}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
           style={{
-            ...styles.closeButton,
+            ...styles.closeButton as CSSProperties,
             backgroundColor: closeButtonHovered ? '#aaa' : '#ccc',
-            scale:closeButtonHovered?'1.2':'1',
+            transform: closeButtonHovered ? 'scale(1.2)' : 'scale(1)',
           }}
         >
           X
         </button>
-        <div style={styles.info}>
+        <div style={styles.info as CSSProperties}>
           <p>Download: {speed.download} KBps</p>
           <p>Upload: {speed.upload} KBps</p>
           <p>Latency: {latency} ms</p>
@@ -85,25 +86,22 @@ const PopupSpeedMonitor: React.FC = () => {
 const styles = {
   container: {
     width: '100%',
-    
     height: '100%',
     padding: '10px',
     backgroundColor: 'rgba(0, 0, 0, 0.7)',
     color: 'white',
-    position: 'relative',
-    overflow: 'hidden',
+    position: 'relative' as 'relative', // TypeScript compatible string literals
+    overflow: 'hidden' as 'hidden',
   },
   info: {
-
     transform: 'translate(0px,-40px)',
-    fontSize:"10px",
-    
+    fontSize: "10px",
   },
   dragRegion: {
     width: '100%',
     WebkitAppRegion: 'drag',
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'column' as 'column',
     justifyContent: 'center',
     alignItems: 'left',
   },
@@ -120,10 +118,10 @@ const styles = {
     fontWeight: 'bold',
     borderRadius: '5px',
     cursor: 'pointer',
-    position: 'absolute',
+    position: 'absolute' as 'absolute',
     top: '5px',
     right: '5px',
-    transition: 'background-color 0.3s ease', // Smooth transition for background color change
+    transition: 'background-color 0.3s ease',
   },
 };
 

@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, CSSProperties } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-
- 
+ /* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/prefer-as-const */
 interface Speed {
   download: number;
   upload: number;
@@ -121,6 +122,7 @@ const SpeedMonitor: React.FC = () => {
   const handleRefreshIntervalChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setRefreshInterval(Number(e.target.value));
   };
+
   const handleDownloadCSV = () => {
     const csvContent = `data:text/csv;charset=utf-8,${[
       ['Time', 'Download Speed (KBps)', 'Upload Speed (KBps)', 'Latency (ms)'],
@@ -137,85 +139,84 @@ const SpeedMonitor: React.FC = () => {
     document.body.removeChild(link);
   };
 
- 
   return (
-    <div style={styles.container}>
-      <h1 style={styles.title}>Speed Monitor</h1>
-      <div style={styles.detailsContainer}>
-        <div style={styles.details}>
+    <div style={styles.container as CSSProperties}>
+      <h1 style={styles.title as CSSProperties}>Speed Monitor</h1>
+      <div style={styles.detailsContainer as CSSProperties}>
+        <div style={styles.details as CSSProperties}>
           <p>Download Speed</p>
           <p>{speed.download.toFixed(2)} KBps</p>
           <p>Highest: {highestSpeed.toFixed(2)} KBps</p>
           <p>Lowest: {lowestSpeed.toFixed(2)} KBps</p>
         </div>
-        <div style={styles.details}>
+        <div style={styles.details as CSSProperties}>
           <p>Upload Speed</p>
           <p>{speed.upload.toFixed(2)} KBps</p>
           <p>Highest: {highestSpeed.toFixed(2)} KBps</p>
           <p>Lowest: {lowestSpeed.toFixed(2)} KBps</p>
         </div>
-        <div style={styles.details}>
+        <div style={styles.details as CSSProperties}>
           <p>Latency</p>
           <p>{latency.toFixed(2)} ms</p>
           <p>Highest: {highestLatency.toFixed(2)} ms</p>
           <p>Lowest: {lowestLatency.toFixed(2)} ms</p>
         </div>
       </div>
-      <div style={styles.calculator}>
-        <h2 style={styles.calculatorTitle}>Download Time Calculator</h2>
-        <div style={styles.inputContainer}>
-          <label htmlFor="fileSize">Enter File Size (in MB):</label>
+      <div style={styles.calculator as CSSProperties}>
+        <h2 style={styles.calculatorTitle as CSSProperties}>Download Time Calculator</h2>
+        <div style={styles.inputContainer as CSSProperties}>
           <input
             type="text"
-            id="fileSize"
-            name="fileSize"
+            placeholder="Enter file size (MB)"
             value={fileSizeMB}
             onChange={handleFileSizeChange}
-            style={styles.input}
+            style={styles.input as CSSProperties}
           />
         </div>
-        <button onClick={calculateDownloadTime} style={styles.calculateButton}>Calculate Download Time</button>
+        <button onClick={calculateDownloadTime} style={styles.calculateButton as CSSProperties}>Calculate</button>
         {downloadTime !== null && (
-          <p style={styles.result}>Estimated Download Time: {downloadTime.toFixed(2)} minutes</p>
+          <div style={styles.result as CSSProperties}>
+            <p>Download Time: {downloadTime.toFixed(2)} minutes</p>
+          </div>
         )}
       </div>
-      <div style={styles.chartContainer}>
-        <ResponsiveContainer width="100%" height={300}>
+      <div style={styles.chartContainer as CSSProperties}>
+        <ResponsiveContainer width="100%" height={400}>
           <LineChart data={data}>
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="time" stroke="#fff" />
-            <YAxis stroke="#fff" />
+            <XAxis dataKey="time" />
+            <YAxis />
             <Tooltip />
             <Legend />
-            <Line type="monotone" dataKey="download" stroke="#8884d8" />
+            <Line type="monotone" dataKey="download" stroke="#8884d8" activeDot={{ r: 8 }} />
             <Line type="monotone" dataKey="upload" stroke="#82ca9d" />
             <Line type="monotone" dataKey="latency" stroke="#ff7300" />
           </LineChart>
         </ResponsiveContainer>
       </div>
-      <div style={styles.intervalSelector}>
-        <label htmlFor="interval" style={styles.intervalLabel}>Refresh Interval: </label>
-        <select id="interval" value={refreshInterval} onChange={handleRefreshIntervalChange} style={styles.intervalSelect}>
-          <option style={styles.optionSelect} value={5000}>5 seconds</option>
-          <option style={styles.optionSelect} value={10000}>10 seconds</option>
-          <option style={styles.optionSelect} value={30000}>30 seconds</option>
-          <option style={styles.optionSelect} value={60000}>1 minute</option>
+      <div style={styles.intervalSelector as CSSProperties}>
+        <label htmlFor="refreshInterval" style={styles.intervalLabel as CSSProperties}>Refresh Interval:</label>
+        <select id="refreshInterval" value={refreshInterval} onChange={handleRefreshIntervalChange} style={styles.intervalSelect as CSSProperties}>
+          <option style={styles.optionSelect as CSSProperties} value={5000}>5 seconds</option>
+          <option style={styles.optionSelect as CSSProperties} value={10000}>10 seconds</option>
+          <option style={styles.optionSelect as CSSProperties} value={30000}>30 seconds</option>
+          <option style={styles.optionSelect as CSSProperties} value={60000}>1 minute</option>
         </select>
       </div>
-      <button onClick={handleDownloadCSV} style={styles.downloadButton}>Download CSV</button>
-      <button onClick={handleDeleteData} style={styles.deleteButton}>Delete Data</button>
+      <button onClick={handleDownloadCSV} style={styles.downloadButton as CSSProperties}>Download CSV</button>
+      <button onClick={handleDeleteData} style={styles.deleteButton as CSSProperties}>Delete Data</button>
     </div>
   );
 };
 
-const styles = {
+const styles: { [key: string]: CSSProperties } = {
   container: {
     fontFamily: 'arial',
     width: '80%',
     margin: '0 auto',
     textAlign: 'center',
     padding: '20px',
-    background: 'rgb(124,43,204)',
+    // background: 'rgb(124,43,204)',
     background: 'radial-gradient(circle, rgba(124,43,204,1) 0%, rgba(226,209,221,1) 0%, rgba(237,170,170,1) 0%, rgba(208,135,160,1) 18%, rgba(124,30,131,1) 95%)',
     borderRadius: '10px',
     boxShadow: '0 0 10px rgba(0, 0, 0, 0.4)',
@@ -240,17 +241,11 @@ const styles = {
     borderRadius: '8px',
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.4)',
   },
-  detailsHover: {
-    transform: 'scale(1.5)', // Added scale effect on hover
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.4)', // Enhanced shadow on hover
-  },
   calculator: {
-    color:'white',
+    color: 'white',
     margin: '20px auto',
     padding: '20px',
-     
     backgroundColor: 'rgba(0, 0, 0, 0.3)',
-
     borderRadius: '8px',
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
     maxWidth: '600px',
@@ -269,7 +264,6 @@ const styles = {
     borderRadius: '5px',
     border: '1px solid #ccc',
     boxSizing: 'border-box',
-     
   },
   calculateButton: {
     padding: '10px 20px',
@@ -297,17 +291,15 @@ const styles = {
     color: 'white',
   },
   intervalSelect: {
-    marginBottom: '10px',
     padding: '10px',
     fontSize: '16px',
     color: 'white',
-    fontWeight:'bold',
-    background:'rgba(255, 255, 255, 0.2)',
+    fontWeight: 'bold',
+    background: 'rgba(255, 255, 255, 0.2)',
     borderRadius: '5px',
     border: '1px solid #ccc',
     marginLeft: '10px',
   },
-  
   downloadButton: {
     backgroundColor: '#008CBA',
     color: 'white',
@@ -330,7 +322,12 @@ const styles = {
     fontSize: '16px',
     transition: 'background-color 0.3s ease',
   },
-  optionSelect: {color:'black', fontSize: '16px',background: 'rgba(0,0,0,0.2)'}
+  optionSelect: {
+    color: 'black',
+    fontSize: '16px',
+    background: 'rgba(0, 0, 0, 0.2)',
+  },
 };
 
 export default SpeedMonitor;
+ 
