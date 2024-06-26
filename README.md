@@ -4,7 +4,8 @@ Speed Monitor is a web-based tool for monitoring internet speed metrics such as 
 
 ##Live Link:https://dhiren-mhatre-speed-o-meter.vercel.app/
 
-##Demo: ![ScreenshotImg](./public/Screenshot 2024-06-26 121322.png)
+##Demo: ![Screenshot](./public/Screenshot%202024-06-26%20121322.png)
+
 ## Features
 
 - **Real-time Monitoring:** Continuously measures and displays current download speed, upload speed, and latency.
