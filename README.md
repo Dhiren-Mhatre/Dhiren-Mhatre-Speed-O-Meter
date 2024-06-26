@@ -30,7 +30,7 @@ Speed Monitor is a web-based tool for monitoring internet speed metrics such as 
 
 1. Clone the repository.
 2. In one terminal, navigate to the project directory and run `npm run dev` to start the Next.js server for the main interface.
-3. Open a new terminal and run `npm run dev` to start the Electron popup mode.
+3. Open a new terminal and run `npm start` to start the Electron popup mode.
 4. Open `http://localhost:3000` in your web browser to access the main application interface.
 5. Adjust the refresh interval and enter a file size to calculate download time.
 6. Explore the historical data chart and export data as CSV for further analysis.
