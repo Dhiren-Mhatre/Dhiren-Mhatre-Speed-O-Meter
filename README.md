@@ -2,14 +2,14 @@
 
 Speed Monitor is a web-based tool for monitoring internet speed metrics such as download speed, upload speed, and latency. It includes a popup mode for quick access from any location on your device.
 
-##Live Link:https://dhiren-mhatre-speed-o-meter.vercel.app/
+**Live Link:** https://dhiren-mhatre-speed-o-meter.vercel.app/
 
-##Demo: ![Screenshot](./public/Screenshot%202024-06-26%20121322.png)
+**Demo:** ![Screenshot](./public/Screenshot%202024-06-26%20121322.png)
 
 ## Features
 
 - **Real-time Monitoring:** Continuously measures and displays current download speed, upload speed, and latency.
-- - **Popup Mode:** Includes a lightweight popup mode using Electron, accessible from anywhere on your device
+- **Popup Mode:** Includes a lightweight popup mode using Electron, accessible from anywhere on your device
 - **Historical Data:** Stores and visualizes historical speed and latency data using a line chart.
 - **Download Time Calculator:** Calculates estimated download time based on user-provided file size and current download speed.
 - **Data Export:** Allows exporting of monitored data as CSV for further analysis.
